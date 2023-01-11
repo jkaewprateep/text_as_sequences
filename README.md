@@ -1,5 +1,9 @@
 # text_as_sequences
-For Study text as sequence model input and predictions
+For Study text as sequence model input and predictions, word and speeches composed of sounds and rythms you can do both word and syllabals compared for most matching word in the sentencse this is only example they are asking me about how to build the ```text_as_sequence model``` process.
+
+## Train ngram_model ##
+
+To train networks model for working in learning and prediction from the inputs alphabest as sets of sequences, predefined and direct text to sequence relationship and support the initail value you can saved and load. In Example, remote devices none OS implementation.
 
 ```
 def train_ngram_model(data, learning_rate=0.002, epochs=10, batch_size=32, layers=2, units=64, dropout_rate=0.5, 
@@ -34,6 +38,10 @@ def train_ngram_model(data, learning_rate=0.002, epochs=10, batch_size=32, layer
     return dataset
 ```
 
+## Create model ##
+
+To initialize networks model for learning and prediction tasks, using Dense layer for simulation and LSTM for sequence to sequence process.
+
 ```
 def model_initialize( n_blocks=7, n_sizes=4 ):
 
@@ -54,6 +62,10 @@ def model_initialize( n_blocks=7, n_sizes=4 ):
     
     return model
 ```
+
+## Model prediction ##
+
+Model prediction method, you can input the initail values or reset for new word prediction.
 
 ```
 def target_prediction( data, model, n_blocks=7, n_sizes=4, input_vocab_size=128, vocab=vocab ):
@@ -77,6 +89,8 @@ def target_prediction( data, model, n_blocks=7, n_sizes=4, input_vocab_size=128,
 ```
 
 ## Working logicals ##
+
+Create data input as Tensorflow constant and training model, prediction with different inputs and see the result are related vary by the input different.
 
 ```
 data = tf.constant([["a", "c", "d", "e", "d", "z", "b"], ["c", "d", "e", "d", "z", "b", "a"], ["d", "e", "d", "z", "b", "a", "c"], 
@@ -103,6 +117,8 @@ print( "result = " + str(result) )
 ```
 
 ## Result ##
+
+Result in number as different from the training input it is small value but scales to more values.
 
 ```
 result = tf.Tensor(0.25167924, shape=(), dtype=float32)
