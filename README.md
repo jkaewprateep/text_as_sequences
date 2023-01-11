@@ -76,6 +76,39 @@ def target_prediction( data, model, n_blocks=7, n_sizes=4, input_vocab_size=128,
     return result
 ```
 
+## Working logicals ##
+
+```
+data = tf.constant([["a", "c", "d", "e", "d", "z", "b"], ["c", "d", "e", "d", "z", "b", "a"], ["d", "e", "d", "z", "b", "a", "c"], 
+    ["e", "d", "z", "b", "a", "c", "d"]])
+dataset = train_ngram_model( data, learning_rate, epochs, batch_size, layers, units, dropout_rate, num_classes )
+model = model_initialize( n_blocks=7, n_sizes=4 )
+model.fit( dataset, epochs=epochs, batch_size=1, callbacks=[custom_callback] )
+
+##########################
+data = tf.constant([["r", "s", "t", "u", "v", "w", "x"], ["r", "s", "t", "u", "v", "w", "x"], ["r", "s", "t", "u", "v", "w", "x"], 
+    ["r", "s", "t", "u", "v", "w", "x"]])
+result = target_prediction( data, model, n_blocks=7, n_sizes=4, input_vocab_size=128, vocab=vocab )
+print( "result = " + str(result) )		# result = [[-0.09399483 -0.10728753  0.3197144   0.43001056]]
+
+data = tf.constant([["a", "c", "d", "e", "d", "z", "b"], ["r", "s", "t", "u", "v", "w", "x"], ["e", "d", "z", "b", "a", "c", "d"], 
+    ["c", "d", "e", "d", "z", "b", "a"]])
+result = target_prediction( data, model, n_blocks=7, n_sizes=4, input_vocab_size=128, vocab=vocab )
+print( "result = " + str(result) )		# result = [[-0.09399483 -0.10728753  0.3197144   0.43001056]]
+
+data = tf.constant([["a", "c", "d", "e", "d", "z", "b"], ["c", "d", "e", "d", "z", "b", "a"], ["d", "e", "d", "z", "b", "a", "c"], 
+    ["e", "d", "z", "b", "a", "c", "d"]])
+result = target_prediction( data, model, n_blocks=7, n_sizes=4, input_vocab_size=128, vocab=vocab )
+print( "result = " + str(result) )
+```
+
+## Result ##
+
+```
+result = tf.Tensor(0.25167924, shape=(), dtype=float32)
+result = tf.Tensor(0.31068712, shape=(), dtype=float32)
+result = tf.Tensor(0.31570023, shape=(), dtype=float32)
+```
 
 | file name | description |
 | --- | --- |
