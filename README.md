@@ -1,5 +1,6 @@
 # text_as_sequences
-For Study text as sequence model input and predictions, word and speeches composed of sounds and rythms you can do both word and syllabals compared for most matching word in the sentencse this is only example they are asking me about how to build the ```text_as_sequence model``` process.
+
+For Study text as sequence model input and predictions, words and speeches composed of sounds and rhythms you can do both word and syllables compared for most matching words in the sentence this is the only example they are asking me about how to build the ```text_as_sequence model``` process.
 
 ## Train ngram_model ##
 
